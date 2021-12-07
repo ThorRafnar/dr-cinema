@@ -3,7 +3,8 @@ import {
     Text, View,  FlatList,
 } from 'react-native';
 import {useDispatch, useSelector} from "react-redux";
-import getAllCinemas from "../actions/cinemaActions";
+import getAllCinemas from "../actions/CinemaActions";
+import CinemaList from '../components/CinemaList';
 
 const Cinemas = function ({ navigation: { navigate } }) {
     const cinemas = useSelector(state => state.cinemas);
@@ -16,15 +17,7 @@ const Cinemas = function ({ navigation: { navigate } }) {
     console.log('Cinemas:', cinemas);
     return (
         <View>
-            <FlatList data={cinemas} keyExtractor={(x) => x.id.toString()} renderItem={ ({ item }) => {
-                return (
-                    <View style={{backgroundColor: '#CCC', margin: 10}}>
-                        <Text>{item.name}</Text>
-                        <Text>{item.website}</Text>
-                    </View>
-                )}
-            }
-            />
+            <CinemaList cinemas={cinemas} />
         </View>
     );
 };
