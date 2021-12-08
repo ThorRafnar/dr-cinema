@@ -14,6 +14,18 @@ const Routes = function () {
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Main"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#444',
+            height: 80,
+          },
+          headerTintColor: '#fff',
+          headerTransparent: true,
+          headerShadowVisible: false,
+          headerTitleStyle: {
+            fontWeight: '500',
+          },
+        }}
       >
         <Stack.Screen
           name="Main"

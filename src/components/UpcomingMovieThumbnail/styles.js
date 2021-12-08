@@ -37,7 +37,7 @@ export default StyleSheet.create({
   title: {
     marginVertical: 10,
     fontWeight: '500',
-    fontSize: 28,
+    fontSize: 18,
   },
   releaseDate: {
     fontWeight: '200',

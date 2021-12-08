@@ -5,6 +5,7 @@ import {
 import {useDispatch, useSelector} from "react-redux";
 import getAllCinemas from "../actions/CinemaActions";
 import CinemaList from '../components/CinemaList';
+import HeaderBackground from "../components/HeaderBackground";
 
 const Cinemas = function ({ navigation: { navigate } }) {
     const cinemas = useSelector(state => state.cinemas);
@@ -17,6 +18,7 @@ const Cinemas = function ({ navigation: { navigate } }) {
     console.log('Cinemas:', cinemas);
     return (
         <View>
+            <HeaderBackground />
             <CinemaList cinemas={cinemas} />
         </View>
     );
