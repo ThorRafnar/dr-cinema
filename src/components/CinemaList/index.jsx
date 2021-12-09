@@ -4,11 +4,14 @@ import CinemaThumbnail from '../CinemaThumbnail';
 
 const CinemaList =  ({ cinemas }) => {
   return (
-    <FlatList data={cinemas} keyExtractor={(x) => x.id.toString()} renderItem={ ({ item }) => {
+    <FlatList
+      contentContainerStyle={{ paddingBottom: 180 }}
+      data={cinemas} keyExtractor={(x) => x.id.toString()}
+      renderItem={({item}) => {
       return (
-        <CinemaThumbnail cinema={item} />
-      )}
-    }
+        <CinemaThumbnail cinema={item}/>
+      )
+    }}
     />
   )
 }

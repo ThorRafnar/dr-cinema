@@ -13,4 +13,9 @@ export const getAllCinemas = () => async (dispatch) => {
   } catch (error) { }
 };
 
+export const selectCinema = (cinema) => ({
+  type: constants.SELECT_CINEMA,
+  payload: {...cinema}
+});
+
 export default getAllCinemas;

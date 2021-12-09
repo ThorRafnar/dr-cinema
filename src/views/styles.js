@@ -9,4 +9,12 @@ export default StyleSheet.create({
     margin: 10,
     borderRadius: 10,
   },
+  purchaseTicket: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 10,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+  }
 });

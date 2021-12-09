@@ -4,6 +4,7 @@ import styles from './styles';
 import {SCREEN_WIDTH} from "../../constants";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
+import {LinearGradient} from "expo-linear-gradient";
 
 const UpcomingMovieThumbnail = ({ movie, index, scrollX }) => {
   const { navigate } = useNavigation();
@@ -28,14 +29,13 @@ const UpcomingMovieThumbnail = ({ movie, index, scrollX }) => {
     if (movie.trailers[0]) {
       if (movie.trailers[0].results) {
         if (movie.trailers[0].results[0]) {
-          trailer = movie.trailers[0].results[0].url;
-          trailer = trailer.split('/');
-          trailerId = trailer[trailer.length - 1];
+          trailer = 'yes';
+          trailerId = movie.trailers[0].results[0].key;
         }
       }
     }
   }
-  console.log(trailer);
+
   return (
     <View style={styles.movieThumbnail}>
       <View style={styles.container}>
@@ -55,19 +55,32 @@ const UpcomingMovieThumbnail = ({ movie, index, scrollX }) => {
         {
           (trailer === 'no trailer')
             ? (
-              <View style={[styles.trailerButton, {backgroundColor: '#777'}]}>
-                <MaterialCommunityIcons name="youtube" size={48} color="white" />
-                <Text style={styles.buttonText}>No trailer available</Text>
-              </View>
-            )
-            : (
-              <TouchableOpacity
-                style={[styles.trailerButton, {backgroundColor: 'red'}]}
-                onPress={() => navigate('Trailer', {trailer: trailerId})}
+              <LinearGradient
+                colors={['#777', '#555']}
+                start={{x: 0.0, y: 0.0}}
+                end={{x: 1, y: 1}}
+                style={styles.trailerButton}
               >
                 <MaterialCommunityIcons name="youtube" size={48} color="white" />
-                <Text style={styles.buttonText}>Watch the trailer</Text>
-              </TouchableOpacity>
+                <Text style={styles.buttonText}>No trailer available</Text>
+              </LinearGradient>
+            )
+            : (
+              <LinearGradient
+                // Button Linear Gradient
+                colors={['#FF0000', '#CB0000']}
+                start={{x: 0.0, y: 0.0}}
+                end={{x: 1, y: 1}}
+                style={styles.trailerButton}
+              >
+                <TouchableOpacity
+                  style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}
+                  onPress={() => navigate('Trailer', {trailer: trailerId, title: movie.title})}
+                >
+                  <MaterialCommunityIcons name="youtube" size={48} color="white" />
+                  <Text style={styles.buttonText}>Watch the trailer</Text>
+                </TouchableOpacity>
+              </LinearGradient>
             )
         }
       </View>

@@ -1,27 +1,33 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {
-    Text, View,  FlatList,
+  ImageBackground, View
 } from 'react-native';
 import {useDispatch, useSelector} from "react-redux";
 import getAllCinemas from "../actions/CinemaActions";
 import CinemaList from '../components/CinemaList';
-import HeaderBackground from "../components/HeaderBackground";
+import {SCREEN_HEIGHT, SCREEN_WIDTH} from "../constants";
+import CinemaDetailModal from "../components/CinemaDetailModal";
 
 const Cinemas = function ({ navigation: { navigate } }) {
-    const cinemas = useSelector(state => state.cinemas);
+  const cinemas = useSelector(state => state.cinemas);
 
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getAllCinemas());
-    }, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllCinemas());
+  }, []);
 
-    console.log('Cinemas:', cinemas);
-    return (
-        <View>
-            <HeaderBackground />
-            <CinemaList cinemas={cinemas} />
-        </View>
-    );
+  return (
+    <ImageBackground
+      source={{uri: 'https://cdn.wallpapersafari.com/5/87/gpyuR9.jpg'}}
+      style={{width: SCREEN_WIDTH, height: SCREEN_HEIGHT}}
+      blurRadius={10}
+    >
+      <View style={{width: '100%', height: '100%', backgroundColor: 'black', opacity: 0.8}}>
+        <CinemaList cinemas={cinemas} />
+        <CinemaDetailModal />
+      </View>
+    </ImageBackground>
+  );
 };
 
 export default Cinemas;

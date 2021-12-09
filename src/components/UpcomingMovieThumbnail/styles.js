@@ -32,7 +32,7 @@ export default StyleSheet.create({
   movieThumbnail: {
     width: SCREEN_WIDTH,
     alignItems: 'center',
-    justifyContent: 'center',
+    top: MARGINS,
   },
   title: {
     marginVertical: 10,

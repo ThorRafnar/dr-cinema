@@ -18,8 +18,8 @@ const Upcoming = ({ navigation: { navigate } }) => {
     <ImageBackground
       source={{uri: 'https://cdn.wallpapersafari.com/5/87/gpyuR9.jpg'}}
       style={{width: SCREEN_WIDTH, height: SCREEN_HEIGHT}}
+      blurRadius={10}
     >
-      <HeaderBackground />
       <UpcomingMovieList movies={upcoming}/>
     </ImageBackground>
   );
