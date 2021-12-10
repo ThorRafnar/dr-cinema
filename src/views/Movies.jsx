@@ -5,6 +5,7 @@ import MovieList from "../components/MovieList";
 import getMovies from "../actions/MovieActions";
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from "../constants";
 import CinemaDetailModal from "../components/CinemaDetailModal";
+import Spinner from '../components/Spinner';
 
 const filterMovies = (cinemaId, movies) => {
   return movies.filter(m => {
@@ -33,7 +34,9 @@ const Movies = function ({ route }) {
     <CinemaDetailModal />
     {
       moviesToDisplay.length === 0
-        ? <Text style={{fontSize: 48, color: 'white', alignSelf: 'center'}}>No movies to display</Text>
+        ? movies.length !== 0
+          ? <Text style={{fontSize: 48, color: 'white', alignSelf: 'center'}}>No movies to display</Text>
+          : <Spinner />
         : <MovieList movies={moviesToDisplay} cinema={cinema}/>
     }
   </ImageBackground>

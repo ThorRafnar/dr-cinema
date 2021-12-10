@@ -9,7 +9,6 @@ const getUpcomingMoviesSuccess = (upcomingMovies) => ({
 export const getUpcomingMovies = () => async (dispatch) => {
   try {
     const upcomingMovies = await movieService.getUpcomingMovies();
-    console.log(upcomingMovies);
     dispatch(getUpcomingMoviesSuccess(upcomingMovies));
   } catch (error) { }
 };

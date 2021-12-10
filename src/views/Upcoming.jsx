@@ -5,6 +5,7 @@ import getUpcomingMovies from "../actions/UpcomingMovieActions";
 import UpcomingMovieList from "../components/UpcomingMovieList";
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from "../constants";
 import HeaderBackground from "../components/HeaderBackground";
+import Spinner from "../components/Spinner";
 
 
 const Upcoming = ({ navigation: { navigate } }) => {
@@ -20,7 +21,11 @@ const Upcoming = ({ navigation: { navigate } }) => {
       style={{width: SCREEN_WIDTH, height: SCREEN_HEIGHT}}
       blurRadius={10}
     >
-      <UpcomingMovieList movies={upcoming}/>
+      {
+        upcoming.length === 0
+          ? <Spinner />
+          : <UpcomingMovieList movies={upcoming}/>
+      }
     </ImageBackground>
   );
 };

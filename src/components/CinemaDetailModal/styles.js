@@ -3,8 +3,10 @@ import {MARGINS, PRIMARY_DARK, SCREEN_HEIGHT, SCREEN_WIDTH} from '../../constant
 
 export default StyleSheet.create({
   modal: {
+
   },
   container: {
+    right: MARGINS * 2,
     backgroundColor: 'white',
     width: SCREEN_WIDTH - (MARGINS * 4),
     justifyContent: 'center',

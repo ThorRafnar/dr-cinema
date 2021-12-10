@@ -7,6 +7,7 @@ import getAllCinemas from "../actions/CinemaActions";
 import CinemaList from '../components/CinemaList';
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from "../constants";
 import CinemaDetailModal from "../components/CinemaDetailModal";
+import Spinner from "../components/Spinner";
 
 const Cinemas = function ({ navigation: { navigate } }) {
   const cinemas = useSelector(state => state.cinemas);
@@ -23,7 +24,11 @@ const Cinemas = function ({ navigation: { navigate } }) {
       blurRadius={10}
     >
       <View style={{width: '100%', height: '100%', backgroundColor: 'black', opacity: 0.8}}>
-        <CinemaList cinemas={cinemas} />
+        {
+          cinemas.length === 0
+            ? <Spinner />
+            : <CinemaList cinemas={cinemas} />
+        }
         <CinemaDetailModal />
       </View>
     </ImageBackground>

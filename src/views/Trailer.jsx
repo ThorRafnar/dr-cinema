@@ -6,7 +6,6 @@ import YoutubePlayer from 'react-native-youtube-iframe';
 
 const Trailer = function ({ route }) {
   const { trailer } = route.params;
-  console.log(trailer);
   return (
     <View>
       <YoutubePlayer
