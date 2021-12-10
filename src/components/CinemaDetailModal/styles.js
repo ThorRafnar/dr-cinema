@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {MARGINS, SCREEN_HEIGHT, SCREEN_WIDTH} from '../../constants';
+import {MARGINS, PRIMARY_DARK, SCREEN_HEIGHT, SCREEN_WIDTH} from '../../constants';
 
 export default StyleSheet.create({
   modal: {
@@ -38,5 +38,6 @@ export default StyleSheet.create({
     marginLeft: 5,
     fontSize: 16,
     fontWeight: '500',
+    color: PRIMARY_DARK,
   }
 });

@@ -22,14 +22,15 @@ const CinemaDetailModal = () => {
     ? cinema.description.split(' ').filter(x => !x.includes('<b')).join(' ')
     : 'No description available';
 
-  const phone = cinema.phone
-    ? cinema.phone
-    : 'No phone number available';
-
   const logos = logoArray();
   let currentLogo;
   try {
     currentLogo = logos[cinema.id - 1];
+  } catch (err) {}
+  let mapLink = '';
+  try {
+    const cityWithoutZip = cinema.city.split(' ')[cinema.city.split(' ').length - 1];
+    mapLink = `https://maps.google.com/?q=${cinema.address.split(' ').join('+')}+${cityWithoutZip}`;
   } catch (err) {}
 
   return (
@@ -52,18 +53,29 @@ const CinemaDetailModal = () => {
         <View style={styles.information}>
           <TouchableOpacity
             style={styles.infoContainer}
-            onPress={() => Linking.openURL(`https://maps.google.com/?q=${cinema.address.split(' ').join('+')}+${cinema.city.split(' ').join('+')}`)}
+            onPress={() => Linking.openURL(mapLink)}
           >
             <MaterialIcons name="location-on" size={32} color={PRIMARY_LIGHT} />
             <Text style={styles.infoText}>{cinema.address}, {cinema.city}</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.infoContainer}
-            onPress={() => Linking.openURL(`tel:${cinema.phone}`)}
-          >
-            <MaterialIcons name="phone" size={32} color={PRIMARY_LIGHT} />
-            <Text style={styles.infoText}>{phone}</Text>
-          </TouchableOpacity>
+          {
+            cinema.phone
+              ? <TouchableOpacity
+                style={styles.infoContainer}
+                onPress={() => Linking.openURL(`tel:${cinema.phone}`)}
+              >
+                <MaterialIcons name="phone" size={32} color={PRIMARY_LIGHT} />
+                <Text style={styles.infoText}>{cinema.phone}</Text>
+              </TouchableOpacity>
+              : <View
+                style={styles.infoContainer}
+              >
+                <MaterialIcons name="phone" size={32} color="#777" />
+                <Text style={[styles.infoText, {color: '#777'}]}>No phone number available</Text>
+              </View>
+
+          }
+
           <TouchableOpacity
             style={styles.infoContainer}
             onPress={() => Linking.openURL(`https://${cinema.website}`)}

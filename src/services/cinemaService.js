@@ -15,7 +15,7 @@ export const getAllCinemas = async () => {
   });
 
   const cinemas = await response.json();
-  cinemas.sort((a, b) => a.name.localeCompare(b.name));
+  cinemas.sort((a, b) => a.name.replace(',', '').localeCompare(b.name.replace(',', '')));
 
   return cinemas.map((cinema) => {
     cinema.address = cinema['address\t'];

@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, Text, FlatList} from 'react-native';
 import styles from './styles';
+import {LinearGradient} from "expo-linear-gradient";
+import {PRIMARY_DARK} from "../../constants";
 
 const Genre = ({ text }) => {
   return (
